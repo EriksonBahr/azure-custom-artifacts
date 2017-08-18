@@ -5,7 +5,7 @@
     [Parameter(Mandatory=$true)][string]$accountKey
 )
 
-$connectionString = 'DefaultEndpointsProtocol=https;AccountName=[$accountName];AccountKey=[$accountKey]'
+$connectionString = 'DefaultEndpointsProtocol=https;AccountName='+$accountName+';AccountKey='+$accountKey
 
 $storageAccount = New-AzureStorageContext -ConnectionString $connectionString
 
