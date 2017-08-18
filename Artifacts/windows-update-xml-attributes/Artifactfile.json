@@ -1,0 +1,38 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "Update existing attributes' values in an existent XML",
+    "publisher": "ebahr",
+    "description": "Update existing attributes' values in an existent XML",
+    "tags": [
+        "Windows"
+    ],
+    "targetOsType": "Windows",
+    "parameters": {
+        "xmlPath": {
+            "type": "string",
+            "displayName": "Path to the XML",
+            "description": "Path to the XML (e.g C:/myXMLs/myXML.xml)"
+        },
+        "elementAttrName": {
+            "type": "string",
+            "displayName": "Attribute names to find the elements",
+            "description": "Attribute names to find the elements - comma separated values. E.g: DBName,AppName"
+        },
+        "attrNames": {
+            "type": "string",
+            "displayName": "Attributes names that will be updated",
+            "description": "Attributes names that will be updated - comma separated values. E.g: value,name"
+        }
+        ,
+        "attrValues": {
+            "type": "string",
+            "displayName": "Attributes' values",
+            "description": "Attributes' values - comma separated values. E.g: 100,myName"
+        }
+
+
+    },
+    "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./CopyBlobsFromContainer.ps1 -xmlPath ''', parameters('xmlPath'), ''' -elementAttrName ''', parameters('elementAttrName'), ''' -attrNames ''', parameters('attrNames'), ''' -attrValues ''', parameters('attrValues'), '''\"')]"
+    }
+}
