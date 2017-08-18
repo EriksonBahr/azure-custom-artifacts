@@ -2,8 +2,8 @@
     [Parameter(Mandatory=$true)][string]$containerName,
     [Parameter(Mandatory=$true)][string]$destinationPath,
     [Parameter(Mandatory=$true)][string]$accountName,
-    [Parameter(Mandatory=$true)][string]$accountKey,
- )
+    [Parameter(Mandatory=$true)][string]$accountKey
+)
 
 $connectionString = 'DefaultEndpointsProtocol=https;AccountName=[$accountName];AccountKey=[$accountKey]'
 
