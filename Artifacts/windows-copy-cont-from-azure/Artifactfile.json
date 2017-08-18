@@ -1,0 +1,38 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "Copy the all the blob files from container",
+    "publisher": "ebahr",
+    "description": "Copy the all the blob files from container",
+    "tags": [
+        "Windows"
+    ],
+    "targetOsType": "Windows",
+    "parameters": {
+        "containerName": {
+            "type": "string",
+            "displayName": "Container Name",
+            "description": "Container Name from Azure"
+        },
+        "destinationPath": {
+            "type": "string",
+            "displayName": "Destination Path",
+            "description": "Destination Path in the OS (e.g: C:\\Downloads)"
+        },
+        "accountName": {
+            "type": "string",
+            "displayName": "Azure account name",
+            "description": "Azure account name"
+        }
+        ,
+        "accountKey": {
+            "type": "string",
+            "displayName": "Azure account key",
+            "description": "Azure account key"
+        }
+
+
+    },
+    "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./CopyBlobsFromContainer.ps1 -containerName ''', parameters('containerName'), ''' -destinationPath ''', parameters('destinationPath'), ''' -accountName ''', parameters('accountName'), ''' -accountKey ''', parameters('accountKey'), '''\"')]"
+    }
+}
