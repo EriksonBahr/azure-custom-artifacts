@@ -1,0 +1,25 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "Set auto-logon",
+    "publisher": "ebahr",
+    "description": "Set auto-logon on system startup to a specific user/password",
+    "tags": [
+        "Windows"
+    ],
+    "targetOsType": "Windows",
+    "parameters": {
+        "UserLogin": {
+            "type": "string",
+            "displayName": "User Login",
+            "description": "User Login"
+        },
+        "UserPass": {
+            "type": "string",
+            "displayName": "User Password",
+            "description": "User Password"
+        }
+    },
+    "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./Set-AutoLogon.ps1 -DefaultUsername ''', parameters('UserLogin'), ''' -DefaultPassword ''', parameters('UserPass') '''\"')]"
+    }
+}
