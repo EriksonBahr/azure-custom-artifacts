@@ -27,8 +27,6 @@ Set-AutoLogon -DefaultUsername "win\admin" -DefaultPassword "password123" -Scrip
 
 #>
 
-Function Set-AutoLogon{
-
     [CmdletBinding()]
     Param(
         
@@ -48,17 +46,12 @@ Function Set-AutoLogon{
                 
     )
 
-    Begin
-    {
         #Registry path declaration
         $RegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+
         $RegROPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
     
-    }
     
-    Process
-    {
-
         try
         {
             #setting registry values
@@ -88,7 +81,8 @@ Function Set-AutoLogon{
             
                 Set-ItemProperty $RegROPath "(Default)" -Value "" -type String
             
-            }        
+            } 
+            write-host "Auto logon set for the user $DefaultUsername"       
         }
 
         catch
@@ -97,13 +91,3 @@ Function Set-AutoLogon{
             Write-Output "An error had occured $Error"
             
         }
-    }
-    
-    End
-    {
-        
-        #End
-
-    }
-
-}
