@@ -20,6 +20,7 @@
         }
     },
     "runCommand": {
-        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./Set-AutoLogon.ps1 -DefaultUsername ''', parameters('UserLogin'), ''' -DefaultPassword ''', parameters('UserPass') '''\"')]"
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./Set-AutoLogon.ps1 -DefaultUsername ''', parameters('UserLogin'), ''' -DefaultPassword ''', parameters('UserPass'), '''\"')]"
+        
     }
 }
