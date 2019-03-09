@@ -7,6 +7,8 @@ Install-Module -Name cChoco -Force
 . ./CommonConfig.ps1
 
 #start ensuring state - one by one
+Start-DscConfiguration .\DSCFeature -wait -verbose
+Set-DscLocalConfigurationManager .\Reboot -verbose
 Start-DscConfiguration .\Locale -wait -verbose
 Start-DscConfiguration .\TimeZone -wait -verbose
 Start-DscConfiguration .\Apps -wait -verbose

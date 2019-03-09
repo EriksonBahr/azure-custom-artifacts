@@ -1,3 +1,26 @@
+Configuration DSCFeature
+{
+   Node 'localhost'
+   {
+      WindowsFeature DSC
+      {
+         Ensure = 'Present'
+         Name = 'Dsc-Service'
+      }
+   }
+}
+
+Configuration Reboot
+{ 
+    Node 'localhost'
+    {
+        LocalConfigurationManager
+        {
+            RebootNodeIfNeeded = $true
+        }
+    }
+}
+
 Configuration Locale
 {
    Import-DSCResource -ModuleName SystemLocaleDsc
@@ -11,7 +34,6 @@ Configuration Locale
         }
    }
 }
-Locale
 
 Configuration TimeZone
 {
@@ -26,7 +48,6 @@ Configuration TimeZone
         }
     }
 }
-TimeZone
 
 Configuration Apps
 {
@@ -52,4 +73,3 @@ Configuration Apps
       }
     }
 }
-Apps
