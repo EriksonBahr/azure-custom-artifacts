@@ -9,6 +9,7 @@ Configuration DSCFeature
       }
    }
 }
+DSCFeature
 
 Configuration Reboot
 { 
@@ -20,6 +21,7 @@ Configuration Reboot
         }
     }
 }
+Reboot
 
 Configuration Locale
 {
@@ -34,6 +36,7 @@ Configuration Locale
         }
    }
 }
+Locale
 
 Configuration TimeZone
 {
@@ -48,8 +51,9 @@ Configuration TimeZone
         }
     }
 }
+TimeZone
 
-Configuration Apps
+Configuration CommonApps
 {
    Import-DscResource -Module cChoco -ModuleVersion 2.4.0.0
    Node 'localhost'
@@ -73,3 +77,4 @@ Configuration Apps
       }
     }
 }
+CommonApps

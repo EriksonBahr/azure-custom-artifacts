@@ -11,4 +11,4 @@ Start-DscConfiguration .\DSCFeature -wait -verbose
 Set-DscLocalConfigurationManager .\Reboot -verbose
 Start-DscConfiguration .\Locale -wait -verbose
 Start-DscConfiguration .\TimeZone -wait -verbose
-Start-DscConfiguration .\Apps -wait -verbose
+Start-DscConfiguration .\CommonApps -wait -verbose
