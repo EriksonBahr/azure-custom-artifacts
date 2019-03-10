@@ -1,4 +1,4 @@
-﻿Configuration Apps
+﻿Configuration ServerApps
 {
    Import-DscResource -Module cChoco -ModuleVersion 2.4.0.0
    Node 'localhost'
@@ -23,9 +23,9 @@
       }
     }
 }
-Apps
+ServerApps
 
-Configuration Features
+Configuration ServerFeatures
 {
    Node 'localhost'
    {
@@ -43,4 +43,38 @@ Configuration Features
       }
    }
 }
-Features
+ServerFeatures
+
+Configuration ServerFirewall
+{
+    Import-DscResource -Module NetworkingDsc
+    node 'localhost'
+    {
+        Firewall AllowDatacenterConnection
+        {
+            Name                  = 'Datacenter'
+            DisplayName           = 'Datacenter'
+            Ensure                = 'Present'
+            Enabled               = 'True'
+            Profile               = 'Private'
+            Direction             = 'Inbound'
+            LocalPort             = '9000-9100'
+            Protocol              = 'TCP'
+            Description           = 'Firewall rule for Datacenter'
+        }
+
+        Firewall AllowDatacenterConnection
+        {
+            Name                  = 'MSSQL'
+            DisplayName           = 'MSSQL'
+            Ensure                = 'Present'
+            Enabled               = 'True'
+            Profile               = 'Private'
+            Direction             = 'Inbound'
+            LocalPort             = '1433'
+            Protocol              = 'TCP'
+            Description           = 'Firewall rule for MSSQL'
+        }
+    }
+}
+ServerFirewall

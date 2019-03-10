@@ -1,4 +1,4 @@
-Configuration DSCFeature
+Configuration CommonFeatures
 {
    Node 'localhost'
    {
@@ -7,9 +7,17 @@ Configuration DSCFeature
          Ensure = 'Present'
          Name = 'Dsc-Service'
       }
+
+      WindowsFeature RemoveWinDefen
+      {
+         Ensure = 'Absent'
+         Name = 'Windows-Defender-Features'
+         DependsOn = "[WindowsFeature]DSC"
+      }
    }
 }
-DSCFeature
+CommonFeatures
+
 
 Configuration Reboot
 { 
@@ -78,3 +86,19 @@ Configuration CommonApps
     }
 }
 CommonApps
+
+Configuration CommonFirewall
+{
+    Import-DscResource -Module NetworkingDsc
+    node 'localhost'
+    {
+        NetConnectionProfile SetPrivate
+        {
+            #I have to fix it to take the first adapter instead
+            InterfaceAlias       = 'Ethernet 2'
+            NetworkCategory      = 'Private'
+        }
+    }
+
+}
+CommonFirewall
