@@ -26,6 +26,7 @@ Configuration Reboot
         LocalConfigurationManager
         {
             RebootNodeIfNeeded = $true
+            ConfigurationMode = 'ApplyOnly'
         }
     }
 }
