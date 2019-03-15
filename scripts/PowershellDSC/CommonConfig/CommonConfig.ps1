@@ -26,7 +26,6 @@ Configuration Reboot
         {
             RebootNodeIfNeeded = $true
             ConfigurationMode = 'ApplyOnly'
-            PsDscAllowPlainTextPassword  = 'True'
         }
     }
 }
