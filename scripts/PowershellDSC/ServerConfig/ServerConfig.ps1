@@ -62,19 +62,6 @@ Configuration ServerFirewall
             Protocol              = 'TCP'
             Description           = 'Firewall rule for Datacenter'
         }
-
-        Firewall AllowDatacenterConnection
-        {
-            Name                  = 'MSSQL'
-            DisplayName           = 'MSSQL'
-            Ensure                = 'Present'
-            Enabled               = 'True'
-            Profile               = 'Private'
-            Direction             = 'Inbound'
-            LocalPort             = '1433'
-            Protocol              = 'TCP'
-            Description           = 'Firewall rule for MSSQL'
-        }
     }
 }
 ServerFirewall

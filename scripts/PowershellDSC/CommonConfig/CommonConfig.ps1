@@ -18,7 +18,6 @@ Configuration CommonFeatures
 }
 CommonFeatures
 
-
 Configuration Reboot
 { 
     Node 'localhost'
@@ -27,6 +26,7 @@ Configuration Reboot
         {
             RebootNodeIfNeeded = $true
             ConfigurationMode = 'ApplyOnly'
+            PsDscAllowPlainTextPassword  = 'True'
         }
     }
 }

@@ -6,6 +6,6 @@ Install-Module -Name NetworkingDsc -Force
 . ./ServerConfig.ps1
 
 #start ensuring state - one by one
-Start-DscConfiguration .\ServerApps -wait -verbose
-Start-DscConfiguration .\ServerFeatures -wait -verbose
-Start-DscConfiguration .\ServerFirewall -wait -verbose
+Start-DscConfiguration .\ServerApps -wait -verbose -force
+Start-DscConfiguration .\ServerFeatures -wait -verbose -force
+Start-DscConfiguration .\ServerFirewall -wait -verbose -force

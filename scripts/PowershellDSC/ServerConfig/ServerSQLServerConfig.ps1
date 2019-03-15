@@ -3,7 +3,9 @@ Configuration InstallSQLServer
     param(
         $SourceInstallPath,
         $SQLDestinationPath,
-        $SQLFilesPath
+        $SQLFilesPath,
+        [PSCredential]
+        $Creds
     )
      Import-DscResource -ModuleName SqlServerDsc
      Import-DscResource -ModuleName StorageDsc
@@ -45,6 +47,10 @@ Configuration InstallSQLServer
         {
             InstanceName        = 'MSSQLSERVER'
             Features            = 'SQLENGINE'
+            UpdateEnabled       = 'False'
+            SQLCollation        = 'SQL_Latin1_General_CP1_CI_AS'
+            SecurityMode        = 'SQL' #mixed mode
+            SAPwd               = $Creds
             SourcePath          = $SQLFilesPath
             SQLSysAdminAccounts = @('Administrators')
             DependsOn           = '[WindowsFeature]NetFramework45', '[File]CopyMountedFiles'
