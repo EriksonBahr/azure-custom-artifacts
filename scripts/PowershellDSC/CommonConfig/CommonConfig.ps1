@@ -1,3 +1,16 @@
+Configuration Reboot
+{ 
+    Node 'localhost'
+    {
+        LocalConfigurationManager
+        {
+            RebootNodeIfNeeded = $true
+            ConfigurationMode = 'ApplyOnly'
+        }
+    }
+}
+Reboot
+
 Configuration CommonFeatures
 {
    Node 'localhost'
@@ -17,19 +30,6 @@ Configuration CommonFeatures
    }
 }
 CommonFeatures
-
-Configuration Reboot
-{ 
-    Node 'localhost'
-    {
-        LocalConfigurationManager
-        {
-            RebootNodeIfNeeded = $true
-            ConfigurationMode = 'ApplyOnly'
-        }
-    }
-}
-Reboot
 
 Configuration Locale
 {
